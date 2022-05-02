@@ -31,7 +31,7 @@
                     </div> 
                 </div>
                 <div class="">{{ order.text|truncatechars:250}}</div>
-                <a href="#"><button class="btnExchange text-uppercase my-2 px-5">See more</button></a>
+                <a href={% url 'exchange'%}{{ order.id }}><button class="btnExchange text-uppercase my-2 px-5">See more</button></a>
                 <div class="d-flex justify-content-between pt-2">
                     <div class="text-uppercase">{{ order.user}}</div>
                     <div class="text-uppercase"></div>

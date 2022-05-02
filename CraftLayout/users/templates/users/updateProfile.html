@@ -23,9 +23,6 @@
 <script>
     let labels = document.querySelectorAll('label')
     let inputs = document.querySelectorAll('input')
-    for(var i = 1; i > inputs.length; i++){
-        inputs[i].val() = ''
-    }
     $('input').focus(function(){
         for(var elem in labels){
             if($(this).attr("id") == labels[elem].id){
@@ -34,7 +31,6 @@
 
         }
     });
-
     $('input').focusout(function(){
         for(var elem in labels){
             if($(this).attr("id") == labels[elem].id){
@@ -45,5 +41,7 @@
             }
         }
     });
+
+    inputs[1].value = ''
 </script>
 {% endblock%}

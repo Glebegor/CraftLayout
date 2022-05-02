@@ -191,6 +191,10 @@ a:hover .addImgProfile{
 /* Exchange */
 
 .orderExchange{
+    width: 100%;
+    margin: 10px 0 auto;
+    color: white;
+    padding: 40px;
     border-radius: 10px;
     background-color: #295AD9;
 }

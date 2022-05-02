@@ -1,27 +1,25 @@
 {% extends 'services/main-layout.html' %}
 {% block Title %}Exchange{% endblock %}
 {% block content%}
-<div style="height: 1280px;" class='bg-light container'>
-    <h1 class=" p-5" style="color: #295AD9;">Exchange</h1>
-    <div class="mt-5 row">
-        <div class="col-2">
-        </div>
-        <div class="col-10">
+<div style="min-height: 800px;" class='container'>
+    <h1 class="text-center pt-3" style="color: #295AD9;">Order</h1>
+    <div class="mt-5">
+        <div class="pb-5">
             {% for order in data%}
-            <div class='orderExchange mt-2 p-4 text-light'>
-                <div class="d-flex pb-3 align-items-center">
+            <div style="min-height: 600px;" class='orderExchange '>
+                <div class="d-flex align-items-center pb-3">
                     <img style="width: 80px; border-radius: 50%;" src={{ order.user.profile.Avatar.url}}>
                     <div class="ms-3">
                         <div class="h4">{{ order.title}}</div>
                         <div class="">{{ order.salary}}</div>
                     </div>
-                </div>
-                <div class="">{{ order.text|truncatechars:250}}</div>
-                <a href={{ order.id }}><button class="btnExchange text-uppercase my-2 px-5">See more</button></a>
+                </div> 
+                <div class="py-5">{{ order.text}}</div>
+                <a href={{ order.id }}><button class="btnExchange text-uppercase my-2 px-5">Massage</button></a>
                 <div class="d-flex justify-content-between pt-2">
                     <div class="d-flex">
-                        <div class="text-uppercase">{{ order.user|truncatechars:25}}</div>
-                        <em class="ps-3" style="opacity: .7;">{{ order.user.profile.position|truncatechars:25}}</em>
+                        <div class="text-uppercase">{{ order.user}}</div>
+                        <em class="ps-3" style="opacity: .7;">{{ order.user.profile.position}}</em>
                     </div>
                     <div class="text-uppercase"></div>
                     <div class="">{{ order.date}}</div>
