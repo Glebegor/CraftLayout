@@ -1,0 +1,210 @@
+/* GENERAL */
+body{
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+}
+button{
+    background-color: #fff;
+    border: 1px solid #295AD9!important;
+    border-radius: 10px!important;
+}
+button:hover{
+    color: #fff!important;
+    background-color: #295AD9!important;
+}
+
+
+
+.flare-button {
+    width: 100%;
+    max-width: 280px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2px;
+    margin-bottom: 30px;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: #295AD9!important;
+    cursor: pointer;
+    text-decoration: none;
+   
+    /* Важные стили для анимации */
+    position: relative;
+    overflow: hidden;
+ }
+.flare-button:hover{
+    opacity: .8;
+    transition: .3s;
+}
+.flare-button:after {
+    content: "";
+    display: block;
+    width: 25px;
+    height: 200px;
+    margin-left: 50px;
+    background: rgba(255, 255, 255, .4) 100%;
+    /* background: linear-gradient(
+        to bottom,
+        rgba(0, 247, 255, 1) 100%
+    ); */
+    left: -80px;
+    top: -100px;
+    z-index: 1;
+    transform: rotate(45deg);
+    position: absolute;
+    animation: movingFlare 2s ease-in-out 1s infinite;
+  }
+   
+  @keyframes movingFlare {
+    0% {
+      left: -30px;
+      margin-left: 0px;
+    }
+    30% {
+      left: 110%;
+      margin-left: 80px;
+    }
+    100% {
+      left: 110%;
+      margin-left: 80px;
+    }
+  }
+/* HEADER */
+header{
+    box-shadow: 0px -10px 25px 10px rgba(0, 0, 0, .3);
+}
+.nav-link:hover{
+    color: #295AD9!important;
+    /* padding-top: 2px; */
+    border-bottom: 2px solid #295AD9;
+    margin-bottom: -2px;
+}
+.navbar div a:first-child button{
+    border-color: #295AD9;
+    background-color: #fff;
+    border-radius:  10px 0 0 10px!important;
+    border-right: 1px!important;
+}
+.navbar div a:last-child button{
+    border-color: #295AD9;
+    background-color: #fff;
+    border-radius: 0 10px 10px 0!important;
+    border-left: 1px!important;
+}
+
+/* main */
+.main{
+    min-height: 800px;
+}
+/* Footer */
+footer{
+    box-shadow: 0px 10px 25px 10px rgba(0, 0, 0, .3);
+}
+/* Register */
+.registerform label.ACTIVElab{
+    margin-top: -10px!important;
+    transition: .3s;
+    padding: 0 10px;
+    border: 1px solid #295AD9;
+    border-radius: 10px;
+}
+.registerform label{
+    transition: .3s;
+    z-index: 2!important;
+    position: absolute;
+    margin-top: 20px;
+}
+.registerform input{
+    transition: .1s;
+    margin: 20px 10px;
+    border:0px;
+    border-bottom:2px solid rgb(41, 90, 217);
+    
+    width: 100%;
+    border-color: #295AD9;
+}
+.registerform input:focus{
+    z-index: -1!important;
+    outline: 0;
+    transition: .3s;
+    transform: scale(1.1);
+}
+.registerform{
+    width: 50%;
+}
+.ProfileForm .registerform{
+    width: 100%;
+}
+/* profile */
+input#id_Avatar{
+    border-bottom: 0px;
+}
+.bannerInner{
+    transition: .3s;
+    height: 350px;
+    background-size: 100% 100%;
+}
+.addImgProfile{
+    transition: .3s;
+    padding: 25px;
+    margin: 0px;
+    z-index: 10;
+    opacity: .0;
+    position: absolute;
+    border-radius: 50%;
+    width: 80px;
+    background: #000;
+}
+.bannerInner:hover{
+    transition: .3s;
+    background-blend-mode: multiply;
+    background-color: rgba(0, 0, 0, .5);
+}
+.bannerInner img{
+    transition: .3s;
+    opacity: .0;
+}
+.bannerInner:hover img{
+    transition: .3s;
+    opacity: 1;
+}
+a:hover .addImgProfile{
+    transition: .3s;
+    opacity: .5;
+}
+.redactorProfile{
+    transition: .3s;
+}
+.redactorProfile:hover{
+    transition: .3s;
+    transform: scale(1.3);
+}
+.ProfileUpdateForm input{
+    width: 40%;
+}
+/* Exchange */
+
+.orderExchange{
+    border-radius: 10px;
+    background-color: #295AD9;
+}
+.btnExchange:hover{
+    opacity: 0.8;
+    color: black!important;
+    background-color: #fff!important;
+}
+
+
+
+
+
+
+
+
+

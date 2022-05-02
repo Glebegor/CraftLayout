@@ -1,0 +1,69 @@
+{% extends 'services/main-layout.html' %}
+{% load static %}
+{% block Title %}Profile{% endblock %}
+{% block content%}
+
+<a href={% url 'changeBanner'%}><div class="bannerInner  text-center" style="background-image: url({{user.profile.banner.url}});"><img src={% static 'services/img/profile/add-banner.png'%} class="p-2" style="width: 350px;"></div></a> 
+    <div style='min-height:800px;' class='container'>
+        <div class="d-flex align-items-center">
+            <div class='w-100 d-flex py-5 align-items-center'>
+                
+                <a href={% url 'changeAvatar'%}><img src="{% static 'services/img/profile/add-photo.png' %}" class="addImgProfile" style=""><img class="imgAvatarIcon" style="width: 80px; height: 80px; border-radius: 50%;" src={{ user.profile.Avatar.url}}></a>
+                <div class="ps-4">
+                    <div style="font-weight: 500; font-size: 24px;">{{ user.username}} <a href={% url 'changeProfile' %}><img class="redactorProfile" style="width:18px;" src="{% static 'services/img/profile/pencil.png' %}" ></a></div>
+                    <div class="text-secondary">{{ user.profile.position}}</div>
+                </div>
+            </div>
+            <div>
+                {% comment %} <h5>Contacts:</h5> {% endcomment %}
+                <button class="btn px-5 my-0 flare-button h-100">Massage</button>
+                <div class="text-secondary">{{user.email}}</div>
+            </div>
+
+        </div>
+        <h2 class="mb-5 text-center" style="color: #295AD9">Orders</h2>
+        {% for order in ExchangeOrd%}
+            <div class='orderExchange mt-2 p-4 text-light'>
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <div class="h5">{{ order.title}}</div>
+                        <div class="h3">{{ order.salary}}</div>
+                    </div> 
+                </div>
+                <div class="">{{ order.text|truncatechars:250}}</div>
+                <a href="#"><button class="btnExchange text-uppercase my-2 px-5">See more</button></a>
+                <div class="d-flex justify-content-between pt-2">
+                    <div class="text-uppercase">{{ order.user}}</div>
+                    <div class="text-uppercase"></div>
+                    <div class="">{{ order.date}}</div>
+                </div>
+            </div>
+        {% endfor%}
+    </div>
+{% endblock%}
+{% block scripts%}  
+<script>
+    let labels = document.querySelectorAll('label')
+    let inputs = document.querySelectorAll('input')
+
+    $('input').focus(function(){
+        for(var elem in labels){
+            if($(this).attr("id") == labels[elem].id){
+                labels[elem].classList.add('ACTIVElab')
+            }
+            
+        }
+    });
+
+    $('input').focusout(function(){
+        for(var elem in labels){
+            if($(this).attr("id") == labels[elem].id){
+                labels[elem].classList.remove('ACTIVElab')
+                if($(this).val() != ''){
+                    labels[elem].classList.add('ACTIVElab')
+                }
+            }
+        }
+    });
+</script>
+{% endblock%}

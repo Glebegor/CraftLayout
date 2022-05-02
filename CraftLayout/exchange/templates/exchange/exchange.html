@@ -1,0 +1,35 @@
+{% extends 'services/main-layout.html' %}
+{% block Title %}Exchange{% endblock %}
+{% block content%}
+<div style="height: 1280px;" class='bg-light container'>
+    <h1 class=" p-5" style="color: #295AD9;">Exchange</h1>
+    <div class="mt-5 row">
+        <div class="col-2">
+        </div>
+        <div class="col-10">
+            {% for order in data%}
+            <div class='orderExchange mt-2 p-4 text-light'>
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <div class="h5">{{ order.title}}</div>
+                        <div class="h3">{{ order.salary}}</div>
+                    </div> 
+                </div>
+                <div class="">{{ order.text|truncatechars:250}}</div>
+                <a href="#"><button class="btnExchange text-uppercase my-2 px-5">See more</button></a>
+                <div class="d-flex justify-content-between pt-2">
+                    <div class="text-uppercase">{{ order.user}}</div>
+                    <div class="text-uppercase"></div>
+                    <div class="">{{ order.date}}</div>
+                </div>
+            </div>
+            {% endfor%}
+        </div>  
+    </div>
+
+</div>
+{% endblock%}
+{% block scripts%}  
+<script>
+</script>
+{% endblock%}
