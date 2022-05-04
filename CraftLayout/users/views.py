@@ -1,8 +1,6 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
 from .forms import ProfileImage, FormRegister, ProfileBanner, FirstProfileform, SecondProfileform
 from exchange.models import Exchange
-from .models import Profile
 
 def RegisterPage(request):
     if request.method == "POST":
@@ -14,7 +12,9 @@ def RegisterPage(request):
         form = FormRegister()
     return render(request, 'users/reg.html', {'form':form})
 
-@login_required
+
+
+
 def profile(request):
     ExchangeOrd = Exchange.objects.filter(user=request.user)
     data = {'ExchangeOrd': ExchangeOrd,}

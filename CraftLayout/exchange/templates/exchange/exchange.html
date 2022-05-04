@@ -1,21 +1,37 @@
 {% extends 'services/main-layout.html' %}
 {% block Title %}Exchange{% endblock %}
 {% block content%}
-<div style="height: 1280px;" class='bg-light container'>
-    <h1 class=" p-5" style="color: #295AD9;">Exchange</h1>
-    <div class="mt-5 row">
+<div style="min-height: 640px;" class='container'>
+    <div class="mt-2 row">
         <div class="col-2">
+            <div class="my-4">
+                <h2>Filters</h2>
+                <input class="inputCheckTehc" type="checkbox" value="Php">Php</input></br>
+                <input class="inputCheckTehc" type="checkbox" value="Django">Django</input></br>
+                <input class="inputCheckTehc" type="checkbox" value="Python">Python</input></br>
+                <input class="inputCheckTehc" type="checkbox" value="React.js">React.js</input></br>
+                <input class="inputCheckTehc" type="checkbox" value="Angular.js">Angular.js</input></br>
+                <input class="inputCheckTehc" type="checkbox" value="Rust">Rust</input></br>
+                <input class="inputCheckTehc" type="checkbox" value="C++">C++</input></br>
+                <input class="inputCheckTehc" type="checkbox" value="C#">C#</input></br>
+                <input class="inputCheckTehc" type="checkbox" value="C">C</input></br>
+                <input class="inputCheckTehc" type="checkbox" value="Next.js">Next.js</input></br>
+                <input class="inputCheckTehc" type="checkbox" value="Vue.js">Vue.js</input></br>
+                <input class="inputCheckTehc" type="checkbox" value="Cms">Cms</input></br>
+                <button class="btn my-2 flare-button">Use filters</button>
+            </div>
         </div>
         <div class="col-10">
             {% for order in data%}
-            <div class='orderExchange mt-2 p-4 text-light'>
+            <div class='orderExchange my-4 p-4 text-light'>
                 <div class="d-flex pb-3 align-items-center">
-                    <img style="width: 80px; border-radius: 50%;" src={{ order.user.profile.Avatar.url}}>
+                    <img style="width: 80px;height: 80px; border-radius: 50%;" src={{ order.user.profile.Avatar.url}}>
                     <div class="ms-3">
                         <div class="h4">{{ order.title}}</div>
                         <div class="">{{ order.salary}}</div>
                     </div>
                 </div>
+                <p class="techExchange">Technologies: <em class="">{{ order.technologies}}</em></p>
                 <div class="">{{ order.text|truncatechars:250}}</div>
                 <a href={{ order.id }}><button class="btnExchange text-uppercase my-2 px-5">See more</button></a>
                 <div class="d-flex justify-content-between pt-2">
@@ -35,5 +51,45 @@
 {% endblock%}
 {% block scripts%}  
 <script>
+    orderExchange = document.querySelectorAll('.orderExchange .techExchange em')
+    $('.col-2 button').on('click', function(){
+        let inputCheck = document.querySelectorAll('.inputCheckTehc')
+        let ar = new Array()
+        for(let i = 0; i < inputCheck.length; i++){
+            if (inputCheck[i].checked == true){
+                ar.push(inputCheck[i].value)
+            }
+        }
+        for(let i = 0; i < orderExchange.length; i++){
+            let b = orderExchange[i].innerHTML.split(',')
+            for(let j = 0; j < b.length; j++){
+                let show = true
+                if(ar.length == 0){
+                    console.log(orderExchange[i].parentNode.parentNode.style.display = 'block')
+                    break
+                }
+                for(let g = 0; g < ar.length; g++){
+                    if(ar[g] == b[j]){
+                        show = true
+                    }
+                    else{
+                        show = false
+                    }
+                    if(show == true){
+                        break
+                    }
+                    else if(b[b.length - 1] != b[j] && show == false){
+                        break
+                    }
+                    else if(b[b.length - 1] == b[j] && show == false){
+                        console.log(orderExchange[i].parentNode.parentNode.style.display = 'none')
+                    }
+                }
+                if(show == true){
+                    break
+                }
+            }
+        }
+    });
 </script>
 {% endblock%}

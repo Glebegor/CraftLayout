@@ -1,28 +1,29 @@
 {% extends 'services/main-layout.html' %}
 {% block Title %}Exchange{% endblock %}
 {% block content%}
-<div style="min-height: 800px;" class='container'>
-    <h1 class="text-center pt-3" style="color: #295AD9;">Order</h1>
-    <div class="mt-5">
-        <div class="pb-5">
+<div style="min-height:800px;background: #295AD9;" class='container'>
+    <h1 class="text-center pt-3 text-light">Order</h1>
             {% for order in data%}
-            <div style="min-height: 600px;" class='orderExchange '>
-                <div class="d-flex align-items-center pb-3">
+            <div class='orderExchange pb-5'>
+                <div class="d-flex align-items-center mt-5 pb-3">
                     <img style="width: 80px; border-radius: 50%;" src={{ order.user.profile.Avatar.url}}>
                     <div class="ms-3">
                         <div class="h4">{{ order.title}}</div>
                         <div class="">{{ order.salary}}</div>
                     </div>
                 </div> 
-                <div class="py-5">{{ order.text}}</div>
-                <a href={{ order.id }}><button class="btnExchange text-uppercase my-2 px-5">Massage</button></a>
-                <div class="d-flex justify-content-between pt-2">
-                    <div class="d-flex">
-                        <div class="text-uppercase">{{ order.user}}</div>
-                        <em class="ps-3" style="opacity: .7;">{{ order.user.profile.position}}</em>
+                <p class="techExchange">Technologies: <em class="">{{ order.technologies}}</em></p>
+                <div class="py-3 px-5">{{ order.text}}</div>
+                <div>
+                    <a href={{ order.id }}><button class="btnExchange text-uppercase my-2 px-5">Massage</button></a>
+                    <div class="d-flex  justify-content-between pt-2">
+                        <div class="d-flex">
+                            <div class="text-uppercase">{{ order.user}}</div>
+                            <em class="ps-3" style="opacity: .7;">{{ order.user.profile.position}}</em>
+                        </div>
+                        <div class="text-uppercase"></div>
+                        <div class="">{{ order.date}}</div>
                     </div>
-                    <div class="text-uppercase"></div>
-                    <div class="">{{ order.date}}</div>
                 </div>
             </div>
             {% endfor%}

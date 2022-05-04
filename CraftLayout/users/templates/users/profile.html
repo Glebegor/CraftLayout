@@ -23,7 +23,7 @@
         </div>
         <h2 class="mb-5 text-center" style="color: #295AD9">Orders</h2>
         {% for order in ExchangeOrd%}
-            <div class='orderExchange mt-2 p-4 text-light'>
+            <div class='orderExchange mt-4 p-4 text-light'>
                 <div class="d-flex justify-content-between">
                     <div>
                         <div class="h5">{{ order.title}}</div>
@@ -39,6 +39,7 @@
                 </div>
             </div>
         {% endfor%}
+        <a href={% url 'createOrder'%}><button class="btn px-5 my-4 flare-button h-100">new exchange</button></a>
     </div>
 {% endblock%}
 {% block scripts%}  

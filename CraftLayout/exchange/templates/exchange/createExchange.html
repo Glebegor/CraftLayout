@@ -3,25 +3,20 @@
 
 {% block content%}
     <div style='height:800px;' class='container d-flex justify-content-center align-items-center'>
-        {% if not user.is_authenticated %}
         <form class="registerform" method="post">
             {% csrf_token %}
-            <label id='id_username'>Username</label>
-            {{ form.username }}</br>
-            <label id='id_email'>Email</label>
-            {{ form.email }}</br>
-            <label id='id_password1'>Password</label>
-            {{ form.password1 }}</br>
-            <label id='id_password2'>Repeat Password</label>
-            {{ form.password2 }}</br>
-            <p class='text-light bg-danger p-3' style='border-radius: 10px;'>Passwords of these types '123qwe, 123456789, 111111' or more lighter are wrong.</p>
+            <label id='id_title'>Title</label>
+            {{ form.title }}
+            <label id='id_salary'>Salary</label>
+            {{ form.salary }}
+            <placeholder>Text</placeholder>
+            {{ form.text }}<br> 
+            <div class="pt-4"></div>
+            <label class="" id='id_technologies'>Technologies</label>
+            {{ form.technologies }}
+            <p class='text-light bg-danger p-3' style='border-radius: 10px;'>You must write technologies through ',' example 'Php,Django,Python,Cms'</p>
             <button class="btn my-2 flare-button">Register</button>
-            <div>If you are registered, You will can <a href={% url 'login'%}>login</a></div>
         </form>
-        
-        {% else %}
-            <p class='bg-success p-5 text-light' style='border-radius: 10px;'>User is Logged</p>
-        {% endif %}
     </div>
 {% endblock%}
 
