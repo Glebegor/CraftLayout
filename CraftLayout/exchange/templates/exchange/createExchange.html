@@ -3,6 +3,7 @@
 
 {% block content%}
     <div style='height:800px;' class='container d-flex justify-content-center align-items-center'>
+        {% if user.is_authenticated%}
         <form class="registerform" method="post">
             {% csrf_token %}
             <label id='id_title'>Title</label>
@@ -17,6 +18,9 @@
             <p class='text-light bg-danger p-3' style='border-radius: 10px;'>You must write technologies through ',' example 'Php,Django,Python,Cms'</p>
             <button class="btn my-2 flare-button">Register</button>
         </form>
+        {% else%}
+        <p class='text-light bg-danger p-3' style='border-radius: 10px;'>User is not authenticated. Please <a href={% url 'reg'%}>register</a>, or <a href={% url 'login'%}>login</a> in your account</p>
+        {% endif%}
     </div>
 {% endblock%}
 

@@ -9,6 +9,7 @@
             {{ form.username }}</br>
             <label id='id_password'>Password</label>
             {{ form.password }}</br>
+            {{ form.non_field_errors }} 
             <button class="btn my-2 flare-button">login</button>
         </form>
         {% else %}

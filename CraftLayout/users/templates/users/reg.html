@@ -8,15 +8,17 @@
             {% csrf_token %}
             <label id='id_username'>Username</label>
             {{ form.username }}</br>
+            
+
             <label id='id_email'>Email</label>
             {{ form.email }}</br>
             <label id='id_password1'>Password</label>
             {{ form.password1 }}</br>
             <label id='id_password2'>Repeat Password</label>
             {{ form.password2 }}</br>
-            <p class='text-light bg-danger p-3' style='border-radius: 10px;'>Passwords of these types '123qwe, 123456789, 111111' or more lighter are wrong.</p>
+            {{ form.errors }}{{ form.non_field_errors }}       
             <button class="btn my-2 flare-button">Register</button>
-            <div>if you are registered, you can <a href={% url 'login'%}>login</a></div>
+            {% comment %} <div>if you are registered, you can <a href={% url 'login'%}>login</a></div> {% endcomment %}
         </form>
         
         {% else %}
@@ -29,8 +31,11 @@
 <script>
     let labels = document.querySelectorAll('label')
     let inputs = document.querySelectorAll('input')
-    for(var i = 1; i > inputs.length; i++){
-        inputs[i].val() = ''
+
+    window.onload = function() {
+        for(var i = 1; i > inputs.length; i++){
+            inputs[i].val() = ''
+        }
     }
     $('input').focus(function(){
         for(var elem in labels){
