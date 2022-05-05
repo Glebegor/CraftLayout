@@ -1,0 +1,140 @@
+{% extends 'services/main-layout.html' %}
+{% block Title %}Orders{% endblock %}
+
+{% block content%}
+<div class="d-flex">
+    <button id="PrevBtn" class="ps-5 TriangleBtn"><div class='TriangleBtnInto TrianglePrevBtn'></div></button>
+    <div class="sliderInner">
+        <div class="SliderTape">
+            {% for elem in Order%}
+                <div style="background: url({{ elem.BgImg.url}}) no-repeat;background-size: 100% 100%;" class="SliderItem">{{ elem.Title}}</div>  
+            {% endfor%}
+        </div>
+    </div>
+    <button id="NextBtn" class="pe-5 TriangleBtn"><div class='TriangleBtnInto TriangleNextBtn'></div></button>
+</div>
+{% endblock%}
+
+{% block scripts%}  
+<script>
+    const BtnPrev = $('#PrevBtn')
+    const BtnNext = $('#NextBtn')
+    const SliderTape = $('.SliderTape')
+    const SliderItemsCount = $('.SliderItem').length
+    const SliderItemWidth = $('.SliderItem').width()
+    var SliderWidth = SliderItemsCount * SliderItemWidth
+    let position = 0
+    
+    BtnPrev.click(function(){
+        position = position + SliderItemWidth
+        console.log(position)
+        TestButton()
+        setPosition()
+    });
+    BtnNext.click(function(){
+        position = position - SliderItemWidth
+        console.log(position)
+        TestButton()
+        setPosition()
+    });
+    const setPosition = () => {
+        SliderTape.css({
+            transform: `translateX(${position}px)`
+        });
+    };
+    const TestButton = () => {
+        if (position == 0){
+            console.log('Start')
+            BtnPrev.prop('disabled', true);
+            BtnPrev.css({
+                opacity: '.3'
+            });
+        }
+        if (position != 0){
+            BtnPrev.prop('disabled', false);
+            BtnPrev.css({
+                opacity: '1'
+            });
+        }
+        if ( position == -SliderItemWidth * SliderItemsCount +SliderItemWidth ){
+            console.log('End')
+            BtnNext.prop('disabled', true);
+            BtnNext.css({
+                opacity: '.3'
+            });
+        }
+        if (position != -SliderItemWidth * SliderItemsCount +SliderItemWidth){
+            BtnNext.prop('disabled', false);
+            BtnNext.css({
+                opacity: '1'
+            });
+        }
+    }
+    TestButton()
+    
+    console.log(SliderTape)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {% comment %} let position = 0;
+    const slides = 1;
+    const slidesToScroll = 1;
+    const sliderInner = $('.sliderInner');
+    const slider = $('.SliderTape');
+    const sliderItem = $('.SliderItem');
+    const btnPrev = $('#PrevBtn');
+    const btnNext = $('#NextBtn'); 
+    const itemsCount = sliderItem.length;
+    const itemWidth = sliderInner.width() / slides;
+    const movePos = slidesToScroll * itemWidth;
+
+    sliderItem.each(function(index, item){
+        $(item).css({
+            minWidth: itemWidth,
+        });
+    });
+
+    btnPrev.click(function(){
+        position += movePos;
+        testBtn()
+        setPosition()
+    });
+    btnNext.click(function(){
+        position -= movePos;
+        testBtn()
+        setPosition()
+    });
+
+    const setPosition = () => {
+        slider.css({
+            transform: `translateX(${position}px)`
+        });
+    };
+
+    const testBtn = () => {
+        if(position < -itemsCount * itemWidth + itemWidth){
+            position = 0
+        }
+        else if(position > 0){
+            position = -itemsCount * itemWidth + itemWidth
+        }
+    };
+    testBtn(); {% endcomment %}
+</script>
+{% endblock%}
