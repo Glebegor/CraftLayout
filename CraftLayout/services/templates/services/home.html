@@ -1,8 +1,39 @@
 {% extends 'services/main-layout.html' %}
+{% load static%}
 {% block Title %}Home{% endblock %}
 
 {% block content%}
 <div class='container'>
-    q
+    <div class="bg-danger" style="height: 800px;background-image: url({% static 'services/img/home/bg-home.jpg'%}); background-attachment: fixed;background-size: 100% 100%;">
+        <div style="height:100%;backdrop-filter: blur(3px); background-color: rgba(0, 0, 0, .4);" class="d-flex justify-content-center align-items-center">
+            <div>
+                <h1 class="text-white text-center display-3">You need site for your Company?</h1>
+                <em><h3 class='text-white text-center display-6'style="opacity: .8;">Or you need site for yourself?</h3></em>
+            </div>
+        </div>
+    </div>
+    <div class="bg-light">
+        <div style='height: 600px;' class="d-flex justify-content-center align-items-center">
+            <div class="text-center">
+                <h1 class="display-3" style="color:#295AD9;">Use us Service</h1>
+                <div class="display-5 pb-5">We can provide to you great package of services</div>
+                <h1 class="display-3 pt-5" style="color:#295AD9;">Use us Exchange</h1>
+                <div class="display-5">Many people use our exchange to take orders and fulfill, them to solve your problem</div>
+            </div>
+        </div>
+    </div>
+    <div style=" background-color: #295AD9;">
+        <div class="innerCards">
+        {% for elem in Order%}
+            <div class="itemCards" style="border-radius: 10px;background-image: url({{ elem.BgImg.url }}) ; background-size: 100% 100%;">
+                <div class="p-4" style=" border: 2px solid #295AD9;border-radius: 10px;backdrop-filter: blur(8px); background-color: rgba(0, 0, 0, .3);">
+                    <h4 class="text-white">{{ elem.Title}}</h4>
+                    <div class="text-white">{{ elem.Text|truncatechars:100}}</div>
+                </div>
+                <a href="{% url 'service'%}{{elem.id}}"><button class="btn flare-button mt-4 mb-0">See More</button></a>
+            </div>
+        {% endfor%}
+        </div>
+    </div>
 </div>
 {% endblock%}

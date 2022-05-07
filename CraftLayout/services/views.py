@@ -2,8 +2,13 @@ from django.shortcuts import render
 from .models import OrderModel
 
 def HomePage(request):
+    Order = OrderModel.objects.all()
     Title = 'Home Page'
-    return render(request, 'services/home.html', {'Title':Title})
+    data = {
+        'Title': Title,
+        'Order': Order
+    }
+    return render(request, 'services/home.html', data)
 
 def servicePage(request):
     Order = OrderModel.objects.all()
