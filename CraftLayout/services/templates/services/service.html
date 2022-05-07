@@ -1,0 +1,64 @@
+{% extends 'services/main-layout.html' %}
+{% block Title %}Service{% endblock %}
+
+{% block content%}
+<div class="d-flex">
+    <button id="PrevBtn" class="ps-5 TriangleBtn"><div class='TriangleBtnInto TrianglePrevBtn'></div></button>
+    <div class="sliderInner">
+        <div class="SliderTape">
+            {% for elem in Order%}
+                <div style="background: url({{ elem.BgImg.url}}) no-repeat;background-size: 100% 100%;background-blend-mode: multiply;
+                background-color: rgba(0, 0, 0, .5);" class="SliderItem">
+                    <div style="backdrop-filter: blur(3px);" class="w-100 h-100">
+                        <div class="d-flex justify-content-center align-items-center h-100">
+                            <div class='w-50 px-5 pt-3' style='border-radius: 10px;border: 2px solid #295AD9;'>
+                                <div class='text-white h2'>{{ elem.Title}}</div>
+                                <div class='text-white'>{{ elem.Text|truncatechars:250}}</div> 
+                                <a href={{ elem.id }}><button class="btn mt-3 flare-button">Show More</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+            {% endfor%}
+        </div>
+    </div>
+    <button id="NextBtn" class="pe-5 TriangleBtn"><div class='TriangleBtnInto TriangleNextBtn'></div></button>
+</div>
+{% endblock%}
+
+{% block scripts%}  
+<script>
+    const BtnPrev = $('#PrevBtn')
+    const BtnNext = $('#NextBtn')
+    const SliderTape = $('.SliderTape')
+    const SliderItemsCount = $('.SliderItem').length
+    const SliderItemWidth = $('.SliderItem').width()
+    var SliderWidth = SliderItemsCount * SliderItemWidth
+    let position = 0
+    
+    BtnPrev.click(function(){
+        position = position + SliderItemWidth
+        TestButton()
+        setPosition()
+    });
+    BtnNext.click(function(){
+        position = position - SliderItemWidth
+        TestButton()
+        setPosition()
+    });
+    const setPosition = () => {
+        SliderTape.css({
+            transform: `translateX(${position}px)`
+        });
+    };
+    const TestButton = () => {
+        if (position > 0){
+            position = -SliderItemWidth * SliderItemsCount + SliderItemWidth
+        }
+        else if(position < -SliderItemWidth * SliderItemsCount + SliderItemWidth){
+            position = 0 
+        }
+    }
+    TestButton()
+</script>
+{% endblock%}

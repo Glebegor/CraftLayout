@@ -1,0 +1,25 @@
+{% extends 'services/main-layout.html' %}
+{% block Title %}Service{% endblock %}
+
+{% block content%}
+<div class="d-flex">
+    <div class="sliderInner">
+        <div class="SliderTape">
+            {% for elem in Order%}
+                <div style="background: url({{ elem.BgImg.url}}) no-repeat;background-size: 100% 100%;background-blend-mode: multiply;
+                background-color: rgba(0, 0, 0, .5);" class="SliderItem">
+                    <div style="backdrop-filter: blur(3px);" class="w-100 h-100">
+                        <div class="d-flex justify-content-center align-items-center h-100">
+                            <div class='w-50 px-5 pt-3' style='border-radius: 10px;border: 2px solid #295AD9;'>
+                                <div class='text-white h2'>{{ elem.Title}}</div>
+                                <div class='text-white'>{{ elem.Text}}</div>
+                                <button class="btn mt-3 flare-button">Buy Service</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+            {% endfor%}
+        </div>
+    </div>
+</div>
+{% endblock%}

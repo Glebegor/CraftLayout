@@ -52,7 +52,19 @@
 {% block scripts%}  
 <script>
     orderExchange = document.querySelectorAll('.orderExchange .techExchange em')
-    $('.col-2 button').on('click', function(){
+
+    for(let i = 0; i< orderExchange.length; i++){
+        orderExchange[i].innerHTML = orderExchange[i].innerHTML.replace( /\s/g, "")
+    }
+
+    $('.inputCheckTehc').click(function(){
+        for(let i = 0; i < orderExchange.length; i++){
+            orderExchange[i].parentNode.parentNode.style.display = 'block'
+        }
+    })
+
+
+    $('.inputCheckTehc ~ button').on('click', function(){
         let inputCheck = document.querySelectorAll('.inputCheckTehc')
         let ar = new Array()
         for(let i = 0; i < inputCheck.length; i++){
@@ -65,7 +77,7 @@
             for(let j = 0; j < b.length; j++){
                 let show = true
                 if(ar.length == 0){
-                    console.log(orderExchange[i].parentNode.parentNode.style.display = 'block')
+                    orderExchange[i].parentNode.parentNode.style.display = 'block'
                     break
                 }
                 for(let g = 0; g < ar.length; g++){
@@ -82,7 +94,7 @@
                         break
                     }
                     else if(b[b.length - 1] == b[j] && show == false){
-                        console.log(orderExchange[i].parentNode.parentNode.style.display = 'none')
+                        orderExchange[i].parentNode.parentNode.style.display = 'none'
                     }
                 }
                 if(show == true){

@@ -255,7 +255,6 @@ button.TriangleBtn{
     display: flex;
 }
 .SliderItem{
-    background-size: no-repeat!important;
     transform: translateX(0px);
     min-height: 800px;
     min-width: 100%;

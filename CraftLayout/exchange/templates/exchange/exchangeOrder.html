@@ -6,7 +6,7 @@
             {% for order in data%}
             <div class='orderExchange pb-5'>
                 <div class="d-flex align-items-center mt-5 pb-3">
-                    <img style="width: 80px; border-radius: 50%;" src={{ order.user.profile.Avatar.url}}>
+                    <img style="width: 80px; height: 80px; border-radius: 50%;" src={{ order.user.profile.Avatar.url}}>
                     <div class="ms-3">
                         <div class="h4">{{ order.title}}</div>
                         <div class="">{{ order.salary}}</div>
