@@ -58,25 +58,17 @@ button:hover{
     z-index: 1;
     transform: rotate(45deg);
     position: absolute;
-    animation: movingFlare 6s ease-in-out 1s infinite;
+    animation: movingFlare 4s ease-out 1s infinite;
   }
    
   @keyframes movingFlare {
     0% {
-      left: -30px;
+      left: -20%;
       margin-left: 0px;
     }
-    20% {
-      left: 50%;
-      margin-left: 80px;
-    }
-    80% {
-        left: 110%;
+    100%{
+        left: 100%;
         margin-left: 80px;
-    }
-    100% {
-      left: 1200px;
-      margin-left: 80px;
     }
   }
 /* Home */
@@ -88,6 +80,13 @@ button:hover{
     margin:30px 10px;
     padding: 20px;
     width: 300px;
+}
+.imgMassangeMain{
+    transition: .3s;
+}
+.imgMassangeMain:hover{
+    transition: .3s;
+    transform: scale(1.3);
 }
 /* HEADER */
 header{
@@ -171,6 +170,11 @@ input#id_Avatar{
     height: 350px;
     background-size: 100% 100%;
 }
+.bannerInner1{
+    transition: .3s;
+    height: 350px;
+    background-size: 100% 100%;
+}
 .addImgProfile{
     transition: .3s;
     padding: 25px;
@@ -223,6 +227,15 @@ a:hover .addImgProfile{
     opacity: 0.8;
     color: black!important;
     background-color: #fff!important;
+}
+.hoverLinkExch{
+    transition: .3s;
+}
+.hoverLinkExch:hover{
+    background-color: rgba(255, 255, 255, .3);
+    background-blend-mode: multiply;
+    transform: scale(0.8);
+    transition: .3s;
 }
 /* Orders */
 #PrevBtn{

@@ -1,3 +1,4 @@
+from .models import Profile
 from django.shortcuts import render, redirect
 from .forms import ProfileImage, FormRegister, ProfileBanner, FirstProfileform, SecondProfileform
 from exchange.models import Exchange
@@ -19,9 +20,19 @@ def RegisterPage(request):
         form = FormRegister()
     return render(request, 'users/reg.html', {'form':form})
 
-def profile(request):
-    ExchangeOrd = Exchange.objects.filter(user=request.user)
-    data = {'ExchangeOrd': ExchangeOrd,}
+def profile(request, slugFil):
+    UserOrd = User.objects.filter(username=slugFil)
+    NameProf = UserOrd[0]
+    ExchangeOrd = Exchange.objects.filter(user=NameProf)
+    ProfileOrd = Profile.objects.filter(user=NameProf)
+    ProfileOrd = ProfileOrd[0]
+    print(ProfileOrd)
+    data = {
+        'ExchangeOrd': ExchangeOrd,
+        'UserOrd': UserOrd,
+        'NameProf': NameProf,
+        'ProfileOrd': ProfileOrd
+    }
     return render(request, 'users/profile.html', data)
 
 def AvatarPage(request):

@@ -3,20 +3,47 @@
 {% block Title %}Profile{% endblock %}
 {% block content%}
 
-<a href={% url 'changeBanner'%}><div class="bannerInner  text-center" style="background-image: url({{user.profile.banner.url}});"><img src={% static 'services/img/profile/add-banner.png'%} class="p-2" style="width: 350px;"></div></a> 
+{% if request.user == NameProf %}
+<a href={% url 'changeBanner'%}>
+    <div class="bannerInner  text-center" style="background-image: url({{ProfileOrd.banner.url}});">
+        <img src={% static 'services/img/profile/add-banner.png'%} class="p-2" style="width: 350px;">
+    </div>
+</a> 
+{% else%}
+<div class="bannerInner1  text-center" style="background-image: url({{ProfileOrd.banner.url}});"></div>
+
+{% endif%}
     <div style='min-height:800px;' class='container'>
         <div class="d-flex align-items-center">
             <div class='w-100 d-flex py-5 align-items-center'>
                 
-                <a href={% url 'changeAvatar'%}><img src="{% static 'services/img/profile/add-photo.png' %}" class="addImgProfile" style=""><img class="imgAvatarIcon" style="width: 80px; height: 80px; border-radius: 50%;" src={{ user.profile.Avatar.url}}></a>
+                {% if request.user == NameProf %}
+                <a href={% url 'changeAvatar'%}>
+                    <img src="{% static 'services/img/profile/add-photo.png' %}" class="addImgProfile" style="">
+                    <img class="imgAvatarIcon" style="width: 80px; height: 80px; border-radius: 50%;" src={{ ProfileOrd.Avatar.url}}>
+                </a>
+                {% else%}
+                <img class="imgAvatarIcon" style="width: 80px; height: 80px; border-radius: 50%;" src={{ ProfileOrd.Avatar.url}}>
+                {% endif%}
                 <div class="ps-4">
-                    <div style="font-weight: 500; font-size: 24px;">{{ user.username}} <a href={% url 'changeProfile' %}><img class="redactorProfile" style="width:18px;" src="{% static 'services/img/profile/pencil.png' %}" ></a></div>
-                    <div class="text-secondary">{{ user.profile.position}}</div>
+                    <div style="font-weight: 500; font-size: 24px;">
+                        {{ NameProf }}
+                        {% if request.user == NameProf %}
+                            <a href={% url 'changeProfile' %}>
+                                <img class="redactorProfile" style="width:18px;" src="{% static 'services/img/profile/pencil.png' %}" >
+                            </a>
+                        {% endif %}
+                    </div>
+                    <div class="text-secondary">{{ ProfileOrd.position}}</div>
                 </div>
             </div>
             <div>
                 {% comment %} <h5>Contacts:</h5> {% endcomment %}
-                <button class="btn px-5 my-0 flare-button h-100">Massage</button>
+                {% if request.user != NameProf %}
+                    <button class="btn px-5 my-0 flare-button h-100">Massage</button>
+                {% else%}
+                    <div style="font-weight: 500; font-size: 24px;">Contacts</div>
+                {% endif %}
                 <div class="text-secondary">{{user.email}}</div>
             </div>
 
@@ -39,7 +66,9 @@
                 </div>
             </div>
         {% endfor%}
-        <a href={% url 'createOrder'%}><button class="btn px-5 my-4 flare-button h-100">new exchange</button></a>
+        {% if request.user == NameProf %}
+            <a href={% url 'createOrder'%}><button class="btn px-5 my-4 flare-button h-100">new exchange</button></a>
+        {% endif %}
     </div>
 {% endblock%}
 {% block scripts%}  

@@ -38,11 +38,11 @@
                 <a class="text-uppercase text-decoration-none text-dark" href={% url 'reg'%}><button class="btn">Reg</button></a>
                 <a class="text-uppercase text-decoration-none text-dark" href={% url 'login'%}><button class="btn">Login</button></a>
               {% else %}
-                <a class="text-uppercase text-decoration-none text-dark" href={% url 'profile'%}><button class="btn">Profile</button></a>
+                <a class="text-uppercase text-decoration-none text-dark" href={% url 'profile' slugFil=request.user %}><button class="btn">Profile</button></a>
                 <a class="text-uppercase text-decoration-none text-dark" href={% url 'exit'%}><button class="btn">Exit</button></a>
-              {% endif %}  
+              {% endif %}
             </div>
-            
+            <a class="nav-link" href={% url 'massanger'%}><img class="imgMassangeMain" src={% static 'services/img/mainlayout/massange.png'%} style="width: 24px; height: 24px;"></a>  
         </div>
     </div>
 </header>

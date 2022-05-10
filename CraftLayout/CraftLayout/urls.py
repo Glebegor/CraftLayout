@@ -8,6 +8,7 @@ urlpatterns = [
     path('', include('services.urls')),
     path('', include('users.urls')),
     path('', include('exchange.urls')),
+    path('', include('massanger.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

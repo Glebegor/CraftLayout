@@ -9,7 +9,7 @@ urlpatterns = [
     path('changeProfile/', ChangeProfPage, name="changeProfile"),
     path('changeAvatar/', AvatarPage, name="changeAvatar"),
     path('reg/', RegisterPage, name='reg'),
-    path('profile/', profile, name='profile'),
+    path('profile/<str:slugFil>', profile, name='profile'),
     path('login/', authViews.LoginView.as_view(template_name='users/login.html'), name='login'),
     path('exit/', authViews.LogoutView.as_view(template_name='users/exit.html'), name='exit')
 ]
