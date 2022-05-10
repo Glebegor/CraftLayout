@@ -15,24 +15,27 @@
     <div class="bg-light">
         <div style='height: 600px;' class="d-flex justify-content-center align-items-center">
             <div class="text-center">
-                <h1 class="display-3" style="color:#295AD9;">Use us Service</h1>
-                <div class="display-5 pb-5">We can provide to you great package of services</div>
+                
                 <h1 class="display-3 pt-5" style="color:#295AD9;">Use us Exchange</h1>
                 <div class="display-5">Many people use our exchange to take orders and fulfill, them to solve your problem</div>
             </div>
         </div>
     </div>
-    <div style=" background-color: #295AD9;">
+    <div class="bg-light text-center">
+        <h1 class="display-3" style="color:#295AD9;">Use us Service</h1>
+        <div class="display-5 pb-5">We can provide to you great package of services</div>
+    </div>
+    <div class="flex-wrap" style="background-color: #295AD9;">
         <div class="innerCards">
-        {% for elem in Order%}
-            <div class="itemCards" style="border-radius: 10px;background-image: url({{ elem.BgImg.url }}) ; background-size: 100% 100%;">
-                <div class="p-4" style=" border: 2px solid #295AD9;border-radius: 10px;backdrop-filter: blur(8px); background-color: rgba(0, 0, 0, .3);">
-                    <h4 class="text-white">{{ elem.Title}}</h4>
-                    <div class="text-white">{{ elem.Text|truncatechars:100}}</div>
+            {% for elem in Order%}
+                <div class="itemCards" style="border-radius: 10px;background-image: url({{ elem.BgImg.url }}) ; background-size: 100% 100%;">
+                    <div class="p-4" style=" border: 2px solid #295AD9;border-radius: 10px;backdrop-filter: blur(8px); background-color: rgba(0, 0, 0, .3);">
+                        <h4 class="text-white">{{ elem.Title}}</h4>
+                        <div class="text-white">{{ elem.Text|truncatechars:100}}</div>
+                    </div>
+                    <a href="{% url 'service'%}{{elem.id}}"><button class="btn flare-button mt-4 mb-0">See More</button></a>
                 </div>
-                <a href="{% url 'service'%}{{elem.id}}"><button class="btn flare-button mt-4 mb-0">See More</button></a>
-            </div>
-        {% endfor%}
+            {% endfor%}
         </div>
     </div>
 </div>

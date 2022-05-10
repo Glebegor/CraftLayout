@@ -58,7 +58,7 @@ button:hover{
     z-index: 1;
     transform: rotate(45deg);
     position: absolute;
-    animation: movingFlare 2s ease-in-out 1s infinite;
+    animation: movingFlare 6s ease-in-out 1s infinite;
   }
    
   @keyframes movingFlare {
@@ -66,12 +66,16 @@ button:hover{
       left: -30px;
       margin-left: 0px;
     }
-    30% {
-      left: 110%;
+    20% {
+      left: 50%;
       margin-left: 80px;
     }
+    80% {
+        left: 110%;
+        margin-left: 80px;
+    }
     100% {
-      left: 110%;
+      left: 1200px;
       margin-left: 80px;
     }
   }
@@ -265,6 +269,9 @@ button.TriangleBtn{
     display: flex;
 }
 .SliderItem{
+    background-size: 100% 100%;
+    background-blend-mode: multiply;
+    background-color: rgba(0, 0, 0, 1);
     transform: translateX(0px);
     min-height: 800px;
     min-width: 100%;

@@ -16,7 +16,7 @@
             <label class="" id='id_technologies'>Technologies</label>
             {{ form.technologies }}
             <p class='text-light bg-danger p-3' style='border-radius: 10px;'>You must write technologies through ',' example 'Php,Django,Python,Cms'</p>
-            <button class="btn my-2 flare-button">Register</button>
+            <button class="btn my-2 flare-button">Create Order</button>
         </form>
         {% else%}
         <p class='text-light bg-danger p-3' style='border-radius: 10px;'>User is not authenticated. Please <a href={% url 'reg'%}>register</a>, or <a href={% url 'login'%}>login</a> in your account</p>

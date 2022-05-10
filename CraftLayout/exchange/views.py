@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Exchange
 from .forms import FormExchange
-
 def exchangePage(request):
     orders = Exchange.objects.all()
     context = {'data': orders}
