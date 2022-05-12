@@ -1,10 +1,10 @@
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
-from .views import MassangerPage
+from .views import MassangPage
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('massanger', MassangerPage, name='massanger')
+    path('massanger/<str:ToUser_name>', MassangPage, name='massang')
 ]
 

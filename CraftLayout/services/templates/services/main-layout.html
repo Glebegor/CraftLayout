@@ -42,7 +42,7 @@
                 <a class="text-uppercase text-decoration-none text-dark" href={% url 'exit'%}><button class="btn">Exit</button></a>
               {% endif %}
             </div>
-            <a class="nav-link" href={% url 'massanger'%}><img class="imgMassangeMain" src={% static 'services/img/mainlayout/massange.png'%} style="width: 24px; height: 24px;"></a>  
+            <a class="nav-link" href={% url 'massang' ToUser_name=request.user %}><img class="imgMassangeMain" src={% static 'services/img/mainlayout/massange.png'%} style="width: 24px; height: 24px;"></a>  
         </div>
     </div>
 </header>

@@ -40,7 +40,7 @@
             <div>
                 {% comment %} <h5>Contacts:</h5> {% endcomment %}
                 {% if request.user != NameProf %}
-                    <button class="btn px-5 my-0 flare-button h-100">Massage</button>
+                    <a href={% url 'massang' ToUser_name=NameProf %}><button class="btn px-5 my-0 flare-button h-100">Massage</button></a>
                 {% else%}
                     <div style="font-weight: 500; font-size: 24px;">Contacts</div>
                 {% endif %}

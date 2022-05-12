@@ -1,0 +1,77 @@
+{% extends 'services/main-layout.html' %}
+{% block Title %}Massanges{% endblock %}
+{% block content%}
+<div style="min-height: 640px;" class='container'>
+    <div class="row">
+        <div class="bg-light col-2">
+            <div class="my-4">
+                    {% for elem in sendToSendClear %}
+                            <a href={% url 'massang' ToUser_name=elem %}><div style='background-color: #295AD9; border-radius: 10px;' class='p-3 text-white my-3'>{{ elem }}</div></a>
+                    {% endfor %}
+            </div>
+        </div>
+        <div class="col-10 p-0">
+            <div style="background-color: #295AD9;height: 600px; overflow-y:scroll;" class="massagesInner pt-3">
+                <div class="massagesSlider">
+                    {% comment %} <div class="d-flex mb-4 bg-white ms-auto me-3 p-3" style="border-radius:10px;max-width: 680px">
+                        <img src={{ ProfileOrd.Avatar.url}} style="width:50px;height: 50px;">
+                        <div class="ps-3">
+                            <div>{{ NameProf }}</div>
+                            <div class="ps-3">{{ elem.Text}}</div> 
+                            <div class="ms-3">{{ elem.date|date:"d M, H:i"}}</div>                           
+                        </div>
+                    </div> {% endcomment %}
+                    {% for elem in MassangerOrd%}
+                        {% if elem.SendTo %}
+                            {% if elem.username == NameProf%}
+                                <div class="d-flex mb-4 bg-white ms-3 p-3" style="border-radius:10px;max-width: 680px">
+                                    <img src={{ ProfileOrd.Avatar.url}} style="border-radius: 50%;width:50px;height: 50px;">
+                                    <div class="ps-3">
+                                        <div>{{ NameProf }}</div>
+                                        <div class="ps-3">{{ elem.Text}}</div> 
+                                        <div class="ms-3">{{ elem.date|date:"d M, H:i"}}</div>                    
+                                    </div>
+                                </div> 
+                            {% endif%}
+                        {% endif %} 
+                        {% if elem.username == request.user%}
+                            {% if elem.SendTo == Name2%}
+                                <div class="d-flex mb-4 bg-white ms-auto me-3 p-3" style="border-radius:10px;max-width: 680px">
+                                    <div class="ps-3">
+                                        <div>{{ elem.Text}}</div>
+                                        <div class="ms-3">{{ elem.date|date:"d M, H:i"}}</div>                         
+                                    </div>
+                                </div> 
+                            {% endif%}
+                        {% endif %}              
+                    {% endfor%}
+                </div>
+            </div>
+            <div class="pt-3 px-3" style="min-height: 200px;">
+                <form class="MassangerForm" method="post">
+                    {% csrf_token %}
+                    {{ form_mass.Text }}
+                    <div class='d-none'>{{ form_mass.username }}</div>
+                    <div class='d-none'>{{ form_mass.date }}</div>
+                    <div class='d-none'>{{ form_mass.SendTo }}</div>
+                    <button class="flare-button">send</button>
+                </form>
+            </div>
+        </div>  
+    </div>
+</div>
+{% endblock%}
+{% block scripts%}  
+<script>
+    SelectInp = $('.MassangerForm select#id_username')
+    selectsUser = $('.MassangerForm select#id_username option')
+    selectSendTo = $('#id_SendTo')
+    
+    for(let i = 0; i < selectsUser.length; i++){
+        if (selectsUser[i].innerHTML == '{{ request.user }}'){
+            SelectInp.val(selectsUser[i].value)
+        }
+    }
+    selectSendTo.val('{{ Name2 }}')
+</script>
+{% endblock%}
