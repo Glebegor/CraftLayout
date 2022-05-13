@@ -15,25 +15,25 @@
     <div class="bg-light">
         <div style='height: 600px;' class="d-flex justify-content-center align-items-center">
             <div class="text-center">
-                
                 <h1 class="display-3 pt-5" style="color:#295AD9;">Use us Exchange</h1>
-                <div class="display-5">Many people use our exchange to take orders and fulfill, them to solve your problem</div>
+                <div class="display-5 pb-5">Many people use our exchange to take orders and fulfill, them to solve your problem</div>
+                <a href={% url 'exchange'%}><button class='btnHome1 w-100'>Exchange</button></a>
             </div>
         </div>
     </div>
-    <div class="bg-light text-center">
+    <div class="bg-light text-center py-5">
         <h1 class="display-3" style="color:#295AD9;">Use us Service</h1>
-        <div class="display-5 pb-5">We can provide to you great package of services</div>
+        <div class="display-5">We can provide to you great package of services</div>
     </div>
-    <div class="flex-wrap" style="background-color: #295AD9;">
+    <div class="flex-wrap bg-light">
         <div class="innerCards">
             {% for elem in Order%}
-                <div class="itemCards" style="border-radius: 10px;background-image: url({{ elem.BgImg.url }}) ; background-size: 100% 100%;">
-                    <div class="p-4" style=" border: 2px solid #295AD9;border-radius: 10px;backdrop-filter: blur(8px); background-color: rgba(0, 0, 0, .3);">
+                <div class="itemCards" style="box-shadow: 0px 0px 10px 3px rgba(0,0,0,.2);border-radius: 10px;background-image: url({{ elem.BgImg.url }}) ; background-size: 100% 100%;">
+                    <div class="p-4" style="border: 2px solid #295AD9;border-radius: 10px;backdrop-filter: blur(8px); background-color: rgba(0, 0, 0, .3);">
                         <h4 class="text-white">{{ elem.Title}}</h4>
-                        <div class="text-white">{{ elem.Text|truncatechars:100}}</div>
+                        <div class="text-white">{{ elem.Text|truncatechars:50}}</div>
                     </div>
-                    <a href="{% url 'service'%}{{elem.id}}"><button class="btn flare-button mt-4 mb-0">See More</button></a>
+                    <a href="{% url 'service'%}{{elem.id}}"><button class="btn flare-button mt-2 mb-0">See More</button></a>
                 </div>
             {% endfor%}
         </div>

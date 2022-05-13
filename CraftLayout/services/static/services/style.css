@@ -72,6 +72,16 @@ button:hover{
     }
   }
 /* Home */
+.btnHome1{
+    transition: .3s;
+    border-radius: 0!important;
+    background: #295AD9;
+    height:300px;
+}
+.btnHome1:hover{
+    transition: .3s;
+    opacity: .3;
+}
 .innerCards{
     display: flex;
     justify-content: center;
