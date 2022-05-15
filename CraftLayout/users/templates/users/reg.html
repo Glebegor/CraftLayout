@@ -18,7 +18,7 @@
             {{ form.password2 }}</br>
             {{ form.errors }}{{ form.non_field_errors }}       
             <button class="btn my-2 flare-button">Register</button>
-            {% comment %} <div>if you are registered, you can <a href={% url 'login'%}>login</a></div> {% endcomment %}
+            <div>if you are registered, you can <a href={% url 'login'%}>login</a></div>
         </form>
         
         {% else %}

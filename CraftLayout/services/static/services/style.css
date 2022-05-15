@@ -12,8 +12,16 @@ button:hover{
     color: #fff!important;
     background-color: #295AD9!important;
 }
-
-
+.PozorMess{
+    color: white;
+    background-color: #dc3545;
+    padding: 15px;
+    border-radius: 10px;
+}
+textarea{
+    border: 2px solid #295AD9;
+    border-radius: 10px;
+}
 
 .flare-button {
     width: 100%;
@@ -224,7 +232,15 @@ a:hover .addImgProfile{
     width: 40%;
 }
 /* Exchange */
-
+.FormExch textarea{
+    width: 100%;
+    border: 2px solid #295AD9;
+    border-radius: 10px;
+}
+.FormExch textarea:focus{
+    width: 100%;
+    border: 2px solid #295AD9;
+}
 .orderExchange{
     width: 100%;
     margin: 10px 0 auto;

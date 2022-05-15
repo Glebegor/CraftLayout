@@ -13,7 +13,7 @@
 <div class="bannerInner1  text-center" style="background-image: url({{ProfileOrd.banner.url}});"></div>
 
 {% endif%}
-    <div style='min-height:800px;' class='container'>
+    <div style='min-height:800px; mb-3' class='container'>
         <div class="d-flex align-items-center">
             <div class='w-100 d-flex py-5 align-items-center'>
                 
@@ -38,13 +38,16 @@
                 </div>
             </div>
             <div>
-                {% comment %} <h5>Contacts:</h5> {% endcomment %}
-                {% if request.user != NameProf %}
-                    <a href={% url 'massang' ToUser_name=NameProf %}><button class="btn px-5 my-0 flare-button h-100">Massage</button></a>
-                {% else%}
-                    <div style="font-weight: 500; font-size: 24px;">Contacts</div>
-                {% endif %}
-                <div class="text-secondary">{{user.email}}</div>
+                {% if user.is_authenticated%}
+                    {% if request.user != NameProf%}
+                        <a href={% url 'massang' ToUser_name=NameProf %}><button class="btn px-5 my-0 flare-button h-100">Massage</button></a>
+                    {% else%}
+                        <div style="font-weight: 500; font-size: 24px;">Contacts</div>
+                    {% endif %}
+                {% else %}
+                <div class="PozorMess">To send massange you need <a href="reg">register</a> or <a href="login">login</a></div>
+                {% endif%}
+                <div class="text-secondary">{{EmailProf}}</div>
             </div>
 
         </div>

@@ -6,14 +6,18 @@
     <div class="sliderInner">
         <div class="SliderTape">
             {% for elem in Order%}
-                <div style='background: url({{ elem.BgImg.url}}) no-repeat; background-blend-mode: multiply;
+                <div style='background: url({{ elem.BgImg.url}}) no-repeat;background-size: 100% 100%; background-blend-mode: multiply;
                 background-color: rgba(0, 0, 0, 0.3);' class="SliderItem">
                     <div style="backdrop-filter: blur(3px);" class="w-100 h-100">
                         <div class="d-flex justify-content-center align-items-center h-100">
                             <div class='w-50 px-5 pt-3' style='border-radius: 10px;border: 2px solid #295AD9;'>
                                 <div class='text-white h2'>{{ elem.Title}}</div>
                                 <div class='text-white'>{{ elem.Text}}</div>
+                                {% if user.is_authenticated%}
                                 <button class="btn mt-3 flare-button">Buy Service</button>
+                                {% else %}
+                                <div class='PozorMess my-3'>You must register or login to buy us service</div>
+                                {% endif %}
                             </div>
                         </div>
                     </div>

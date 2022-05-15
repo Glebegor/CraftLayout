@@ -23,11 +23,12 @@ def RegisterPage(request):
 def profile(request, slugFil):
     UserOrd = User.objects.filter(username=slugFil)
     NameProf = UserOrd[0]
+    EmailProf = UserOrd[0].email
     ExchangeOrd = Exchange.objects.filter(user=NameProf)
     ProfileOrd = Profile.objects.filter(user=NameProf)
     ProfileOrd = ProfileOrd[0]
-    print(ProfileOrd)
     data = {
+        'EmailProf': EmailProf,
         'ExchangeOrd': ExchangeOrd,
         'UserOrd': UserOrd,
         'NameProf': NameProf,
@@ -40,7 +41,7 @@ def AvatarPage(request):
         img_profile = ProfileImage(request.POST, request.FILES, instance=request.user.profile)
         if img_profile.is_valid():
             img_profile.save()
-            return redirect('profile')
+            return redirect('home')
     else:
         img_profile = ProfileImage(instance=request.user.profile)
     return render(request, 'users/Avatar.html', {'img_profile': img_profile})
@@ -50,7 +51,7 @@ def BannerPage(request):
         banner_profile = ProfileBanner(request.POST, request.FILES, instance=request.user.profile)
         if banner_profile.is_valid():
             banner_profile.save()
-            return redirect('profile')
+            return redirect('home')
     else:
         banner_profile = ProfileBanner(instance=request.user.profile)
     return render(request, 'users/Banner.html', {'banner_profile': banner_profile})
@@ -60,7 +61,7 @@ def ChangeProfPage(request):
         First_form = FirstProfileform(request.POST, instance=request.user.profile)
         if First_form.is_valid():
             First_form.save()
-            return redirect('profile')
+            return redirect('home')
     else:
         First_form = FirstProfileform()
 
@@ -68,7 +69,7 @@ def ChangeProfPage(request):
         Second_form = SecondProfileform(request.POST, instance=request.user)
         if Second_form.is_valid():
             Second_form.save()
-            return redirect('profile')
+            return redirect('home')
     else:
         Second_form = SecondProfileform()
 

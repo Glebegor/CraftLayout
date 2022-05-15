@@ -132,4 +132,5 @@ MEDIA_URL = '/pictures/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# REDIRECTS
 LOGIN_REDIRECT_URL = 'home'

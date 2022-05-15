@@ -5,6 +5,8 @@ from .forms import massangerForm
 from .models import MassangerModel
 
 def MassangPage(request, ToUser_name):
+    if request.user == 'AnonymousUser':
+        return redirect('home')
     allUsers = User.objects.all()
     UserOrd = User.objects.filter(username=ToUser_name)
     NameProf = UserOrd[0]
@@ -18,10 +20,13 @@ def MassangPage(request, ToUser_name):
     for item in sendToSend: 
         if item not in sendToSendClear: 
             sendToSendClear.append(item) 
-    print(sendToSendClear)
     MassangerOrd = MassangerModel.objects.all()
     ProfileOrd = Profile.objects.filter(user=NameProf)
     YourName = request.user
+
+    if ToUser_name == request.user:
+        return redirect('massanger', ToUser_name == sendToSendClear[0])
+
     if request.method == "POST":
         form = massangerForm(request.POST)
         if form.is_valid():
